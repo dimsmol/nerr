@@ -1,10 +1,10 @@
 # nerr
 
-Using custom errors is kinda tricky in JS. Unfortunately, it is not enough to just inherit your class from `Error`. You need to do really strange things to provide stack trace with your error objects.
+Using custom errors is kinda tricky in JS. Unfortunately, it is not enough to just inherit your class from Error. You need to do really strange things to provide stack trace with your error objects.
 
-`nerr` fixes this problem by providing `ErrorBase` class. By inheriting it you're getting correct error implementation with stack trace included.
+nerr fixes this problem by providing ErrorBase class. By inheriting it you're getting correct error implementation with stack trace included.
 
-`ErrorBase` features:
+ErrorBase features:
 
 * Inherited from Error, all your error objects will be instances of Error
 * Fully Error-compatible, mimics all it's properties, existing code working with Error will also work with classes inherited from ErrorBase
@@ -12,10 +12,10 @@ Using custom errors is kinda tricky in JS. Unfortunately, it is not enough to ju
 
 ## How to use
 
-- Inherit form `ErrorBase`
-- Don't forget to call superclass constructor in your constructor
-- Override `prototype.name` by setting it to your class name
-- Override `getMessage()` to provide error message
+* Inherit form ErrorBase
+* Don't forget to call superclass constructor in your constructor
+* Override prototype.name by setting it to your class name
+* Override getMessage() to provide error message
 
 Note, that ErrorBase hasn't `message` argument that Error has. However, you can provide it in your error class yourself, as well as any other arguments and properties you may need. But be careful with property names. For example, inaccurate overriding of `message` property (which is a getter) can break functionality.
 
@@ -64,9 +64,9 @@ catch(err) {
 
 ## How it works
 
-ErrorBase constructor calls `Error.captureStackTrace()` which provides given object with a `stack` getter, that returns constructed stack trace.
+ErrorBase constructor calls Error.captureStackTrace() which provides given object with a `stack` getter, that returns constructed stack trace.
 
-captureStackTrace(obj, func) constructs stack trace by concatenating `obj.toString()` with a stack trace itself (`func` is used to appropriately truncate stack trace, excluding error construction function trace). captureStackTrace() is called at construction time, when it isn't known what will be error's string representation - because it depends on getMessage() that may depend on properties that are not initialized yet. So, captureStackTrace() is provided with StackKeeper instance which has toString() returning empty string. Error's actual string representation will be added later, on call of getStackTrace() or `stack` getter.
+captureStackTrace(obj, func) constructs stack trace by concatenating obj.toString() with a stack trace itself (`func` is used to appropriately truncate stack trace, excluding error construction function trace). captureStackTrace() is called at construction time, when it isn't known what will be error's string representation - because it depends on getMessage() that may depend on properties that are not initialized yet. So, captureStackTrace() is provided with StackKeeper instance which has toString() returning empty string. Error's actual string representation will be added later, on call of getStackTrace() or `stack` getter.
 
 ## Compatibility
 
