@@ -72,6 +72,6 @@ ErrorBase constructor calls `Error.captureStackTrace()` which provides given obj
 
 ErrorBase implementation depends on undocumented `Error.captureStackTrace()` function and on how exactly it constructs a stack trace. For time of writing it's fully V8-compatible, but situation may change in future.
 
-It's planned to provide fixes when needed, keeping ErrorBase backwards compatible. Please tell me if something is wrong with it in node >= 0.6.0
+It's planned to provide fixes when needed, keeping ErrorBase backwards compatible. Please tell me if something is wrong with it on some specific version of node.js
 
 `require('nerr').compat.ErrorBase` contains implementation that does not depend on any undocumented features and supposed to work correctly on any version of node.js It produces less accurate stack trace with some lines that must not be actually present, but it is still a correct working solution. However, it is not recommended to use unless you need a temporary workaround, waiting for fix in standard ErrorBase.
