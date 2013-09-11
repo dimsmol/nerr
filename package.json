@@ -10,7 +10,7 @@
 	"preferGlobal": false,
 	"private": false,
 	"dependencies": {
-		"inh": "~0.0.1"
+		"inherits": "~2.0.1"
 	},
 	"engines": {
 		"node": ">=0.8.0"
