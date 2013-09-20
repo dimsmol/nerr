@@ -76,3 +76,7 @@ ErrorBase constructor calls `Error.captureStackTrace(obj, func)` which provides 
 If `captureStackTrace()` is not available, ErrorBase uses `new Error()` to get stack trace. In this case it cannot exclude error construction part of trace.
 
 If `Object.defineProperties` is not available, `message` and `stack` getters will not be exposed, use `getMessage()` and `getStackTrace` functions instead.
+
+## License
+
+MIT
