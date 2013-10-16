@@ -1,6 +1,6 @@
 {
 	"name": "nerr",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"description": "Properly constructed base class for error objects",
 	"keywords": ["error", "exception"],
 	"author": {
